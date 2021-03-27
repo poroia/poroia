@@ -1,20 +1,27 @@
 import React, { HTMLAttributes } from "react"
 import { Canvas } from "react-three-fiber"
-import useTweakpane from '../../../common/hooks/useTweakpane'
+import { useTweaks } from "use-tweaks"
 import Box from "./Box"
 
-interface GalaxyGeneratorProps extends HTMLAttributes<HTMLElement> {}
+interface GalaxyGeneratorProps {
+  rootProps: HTMLAttributes<HTMLElement>
+}
 
 const GalaxyGenerator = (props: GalaxyGeneratorProps) => {
-  // const tweaks = useTweakpane()
+  const tweaks = useTweaks({
+    positionX1: { value: -1.2, min: -4, max: 4 },
+    positionX2: { value: 1.2, min: -4, max: 4 },
+  })
+
+  console.log(tweaks)
 
   return (
-    <Canvas {...props}>
+    <Canvas {...props.rootProps}>
       <ambientLight intensity={0.5} />
       <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
       <pointLight position={[-10, -10, -10]} />
-      <Box position={[-1.2, 0, 0]} />
-      <Box position={[1.2, 0, 0]} />
+      <Box position={[tweaks.positionX1, 0, 0]} />
+      <Box position={[tweaks.positionX2, 0, 0]} />
     </Canvas>
   )
 }
