@@ -5,7 +5,7 @@ interface Tweaks {
   [key: string]: any
 }
 
-const useTweakpane = (builder: TweakpaneBuilder) => {
+export const useTweakpane = (builder: TweakpaneBuilder) => {
   const [tweaks, setTweaks] = useState<Tweaks>({})
   const tweakpaneRef = useRef<R_Tweakpane>(new R_Tweakpane(setTweaks))
 
@@ -17,5 +17,3 @@ const useTweakpane = (builder: TweakpaneBuilder) => {
 
   return tweaks
 }
-
-export default useTweakpane

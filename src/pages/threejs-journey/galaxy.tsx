@@ -1,7 +1,7 @@
-import GalaxyGenerator from "../../modules/ThreeJsJourney/GalaxyGenerator/GalaxyGenerator"
+import GalaxyGenerator from "../../modules/ThreeJsJourney/GalaxyGenerator"
 
 const Galaxy = () => {
-  return <GalaxyGenerator rootProps={{ className: "container_full-page" }} />
+  return <GalaxyGenerator className="container_full-page" />
 }
 
 export default Galaxy

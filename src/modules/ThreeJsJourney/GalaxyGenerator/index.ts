@@ -1,1 +1,1 @@
-export { default } from "./GalaxyGenerator"
+export { GalaxyGenerator as default } from "./GalaxyGenerator"

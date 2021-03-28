@@ -9,7 +9,11 @@
   },
   "dependencies": {
     "@react-three/drei": "^3.11.0",
+    "@types/dat.gui": "^0.7.6",
+    "classnames": "^2.2.6",
+    "dat.gui": "^0.7.7",
     "next": "10.0.9",
+    "postprocessing": "^6.21.2",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-three-fiber": "^5.3.19",
@@ -24,6 +28,7 @@
     "@types/react": "^17.0.3",
     "@types/react-dom": "^17.0.2",
     "@types/three": "^0.126.1",
+    "next-transpile-modules": "^6.3.0",
     "typescript": "^4.2.3"
   }
 }

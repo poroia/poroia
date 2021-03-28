@@ -1,1 +1,1 @@
-export { default } from "./useTweakpane"
+export { useTweakpane as default } from "./useTweakpane"
