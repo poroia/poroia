@@ -1,61 +1,76 @@
 import * as dat from "dat.gui"
 
-//
-// Tweaks
-//  - compute type of final return value
-//
-export interface Tweaks extends Record<string, any> {}
+/*
+// TWEAKS
+*/
 
-export type UseDatGuiData<T> = {
-  [k in keyof T]: T[k] extends { value: infer TT } ? TT : never
+/**
+ * The User-inputted Schema
+ *
+ * NOTE: Want to utilize excess property checking on InputController
+ *       using ValidateShape, but unable to so far.
+ *       ``` // tried using this as
+ *       (InputController & ValidateShape<k, InputController, "ERROR_EXCESS_PROPERTY">)
+ *       | InputControllerValue
+ *       ```
+ */
+export type Schema<T> = {
+  [k in keyof T]: InputController | InputControllerValue
+}
+// tried using this as value
+//  (InputController & ValidateShape<k, InputController, "ERROR_EXCESS_PROPERTY">)
+//  | InputControllerValue
+
+/**
+ * Remaps type to type of "value" property if type an object
+ */
+export type MapToValueKey<T> = {
+  [k in keyof T]: T[k] extends { value: infer V } ? V : T[k]
 }
 
 /**
- * Base Controller
+ * Input Controller
  */
-interface BaseController {
+export interface InputController {
+  /* universal properties */
+  value: InputControllerValue
+
   name?: string
   onEventType?: "change" | "finishChange"
-}
 
-/**
- * Default Controller
- */
-export type DefaultController =
-  | StringBooleanController
-  | NumberController
-  | ColorController
-
-/**
- * String Boolean Controller
- */
-export interface StringBooleanController extends BaseController {
-  type: "string | boolean"
-  value: string | boolean
+  /* specific properties */
+  min?: number // for value: number
+  max?: number // for value: number
+  step?: number // for value: number
 }
-/**
- * Number Controller
- */
-export interface NumberController extends BaseController {
-  type: "number"
-  value: number
-  min?: number
-  max?: number
-  step?: number
-}
-/**
- * Color Controller
- */
-export interface ColorController extends BaseController {
-  type: "color"
-  value: ColorHexString | RgbArray | RgbaArray | HsvObject
-}
-type ColorHexString = string
-type RgbArray = [number, number, number]
-type RgbaArray = [number, number, number, number]
-type HsvObject = { h: number; s: number; v: number }
+export type ColorHexString = string
+export type RgbArray = [number, number, number]
+export type RgbaArray = [number, number, number, number]
+export type HsvObject = { h: number; s: number; v: number }
+export type InputControllerValue =
+  | number
+  | string
+  | boolean
+  | (() => void)
+  | ColorHexString
+  | RgbArray
+  | RgbaArray
+  | HsvObject
 
 /**
  * Folder Controller
  */
 export interface FolderController {}
+
+/*
+// HELPERS
+*/
+
+/**
+ * Force excess property checking
+ */
+export type ValidateShape<T, Shape, Error> = T extends Shape
+  ? Exclude<keyof T, keyof Shape> extends never
+    ? T
+    : Error
+  : Shape
