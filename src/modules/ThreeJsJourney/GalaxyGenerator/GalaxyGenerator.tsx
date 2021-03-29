@@ -21,7 +21,7 @@ export const GalaxyGenerator = (props: HTMLProps<HTMLElement>) => {
       insideColor: "#ff6030",
       outsideColor: "#1b3984",
     },
-    { width: 360 }
+    // { width: 360 }
   )
 
   return (

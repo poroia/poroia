@@ -1,6 +1,6 @@
-import React, { useMemo, useRef } from "react"
+import React, { useEffect, useMemo, useRef } from "react"
 import { useFrame } from "react-three-fiber"
-import { Mesh, Color, AdditiveBlending } from "three"
+import { Mesh, Color, AdditiveBlending, BufferAttribute } from "three"
 
 interface GalaxyProps {
   count: number
@@ -19,6 +19,11 @@ export const Galaxy = (props: GalaxyProps) => {
   const points = useRef<Mesh>()
 
   const [positions, colors] = useMemo(() => generateAttributes(props), [props])
+
+  useEffect(() => {
+    points.current.geometry.attributes.position.needsUpdate = true
+    points.current.geometry.attributes.color.needsUpdate = true
+  }, [props])
 
   useFrame((state) => {
     points.current.rotation.y = state.clock.elapsedTime * 0.05
@@ -42,9 +47,10 @@ export const Galaxy = (props: GalaxyProps) => {
         />
         <bufferAttribute
           attachObject={["attributes", "color"]}
-          count={colors.length / 3}
           array={colors}
           itemSize={3}
+          count={colors.length / 3}
+          needsUpdate
         />
       </bufferGeometry>
     </points>
@@ -54,6 +60,8 @@ export const Galaxy = (props: GalaxyProps) => {
 const generateAttributes = (
   props: GalaxyProps
 ): [Float32Array, Float32Array] => {
+  console.log("recalculating..", props)
+
   let positions = [],
     colors = []
 
