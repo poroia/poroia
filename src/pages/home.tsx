@@ -10,19 +10,17 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+        <h1 className={styles.title}>welcome to poroia!</h1>
 
-        <p className={styles.description}>
-          Get started by editing{" "}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
+        <p className={styles.description}>a temporary landing page (Next.js starter)</p>
 
         <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
+          <a href="/threejs-journey/galaxy" className={styles.card}>
+            <h3>Galaxy &rarr;</h3>
+            <p>
+              threejs-journey's, except built with r3f and a custom useDatGui
+              hook
+            </p>
           </a>
 
           <a href="https://nextjs.org/learn" className={styles.card}>
