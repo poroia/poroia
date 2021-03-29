@@ -5,7 +5,7 @@ import {
   FolderParams,
   SeparatorParams,
 } from "tweakpane/dist/types/api/types"
-import { TweakpaneConfig } from "tweakpane/dist/types/pane/tweakpane-config"
+// import { TweakpaneConfig } from "tweakpane/dist/types/pane/tweakpane-config"
 import {
   TweakpaneBuilderTypes,
   TweakpaneBuilderParams,
