@@ -12,11 +12,6 @@ export const buildGui = <T extends Schema<T>>(
   schema: T,
   set: Dispatch<SetStateAction<MapToValueKey<T>>>
 ) => {
-  // helper to update state based on key, value
-  const update = (key: string, value: unknown) => {
-    set((state) => ({ ...state, [key]: value }))
-  }
-
   // helper to appropriately add to pane
   const addHelper = (key: string, input: InputControllerValue) => {
     switch (typeof input) {
@@ -37,15 +32,6 @@ export const buildGui = <T extends Schema<T>>(
     }
   }
 
-  // helper to add properties to controller
-  // ex: `c = name !== undefined ? c.name(name) : c`
-  const addPropsHelper = (c: dat.GUIController, obj: Object) => {
-    Object.entries(obj).forEach(([key, value]) => {
-      c = value !== undefined ? c[key](value) : c
-    })
-    return c
-  }
-
   Object.entries(schema).forEach(
     ([key, input]: [string, InputController | InputControllerValue]) => {
       let c: dat.GUIController
@@ -58,19 +44,35 @@ export const buildGui = <T extends Schema<T>>(
         c = addPropsHelper(c, props)
 
         if (onEventType === "finishChange") {
-          c = c.onFinishChange((value) => update(key, value))
+          c = c.onFinishChange((value) => update(key, value, set))
         } else {
-          c = c.onChange((value) => update(key, value))
+          c = c.onChange((value) => update(key, value, set))
         }
       } else {
-        c = addHelper(key, input).onChange((value) => update(key, value))
+        c = addHelper(key, input).onChange((value) => update(key, value, set))
       }
-
-      console.log(key, input)
     }
   )
 
   return schema as MapToValueKey<T>
+}
+
+// helper to update state based on key, value
+const update = <T>(
+  key: string,
+  value: unknown,
+  set: Dispatch<SetStateAction<T>>
+) => {
+  set((state) => ({ ...state, [key]: value }))
+}
+
+// helper to add properties to controller
+// ex: `c = name !== undefined ? c.name(name) : c`
+const addPropsHelper = (c: dat.GUIController, obj: Object) => {
+  Object.entries(obj).forEach(([key, value]) => {
+    c = value !== undefined ? c[key](value) : c
+  })
+  return c
 }
 
 // https://github.com/regexhq/hex-color-regex/
