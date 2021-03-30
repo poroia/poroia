@@ -15,6 +15,9 @@ a {
   box-sizing: border-box;
 }
 
-.container_full-page {
-  min-height: 100vh;
+.full-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  outline: none;
 }
