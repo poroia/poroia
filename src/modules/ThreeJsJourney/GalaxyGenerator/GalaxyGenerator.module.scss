@@ -1,6 +1,17 @@
+.debug__wrapper {
+  position: absolute;
+  max-width: 1280px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  pointer-events: none;
+}
+
 .debug {
   position: absolute;
   top: 8px;
   right: 8px;
-  width: 300px;
+  pointer-events: auto;
 }

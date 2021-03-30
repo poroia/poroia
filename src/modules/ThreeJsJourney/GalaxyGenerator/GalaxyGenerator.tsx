@@ -40,7 +40,9 @@ export const GalaxyGenerator = (props: HTMLProps<HTMLElement>) => {
         <Galaxy {...tweaks} />
         <OrbitControls enableDamping />
       </Canvas>
-      <div ref={debugContainer} className={styles.debug} />
+      <div className={styles.debug__wrapper}>
+        <div ref={debugContainer} className={styles.debug} />
+      </div>
     </>
   )
 }
