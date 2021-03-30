@@ -60,8 +60,6 @@ export const Galaxy = (props: GalaxyProps) => {
 const generateAttributes = (
   props: GalaxyProps
 ): [Float32Array, Float32Array] => {
-  console.log("recalculating..", props)
-
   let positions = [],
     colors = []
 

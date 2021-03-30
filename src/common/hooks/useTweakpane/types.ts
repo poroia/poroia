@@ -1,25 +1,21 @@
-/*
-// TWEAKS
-*/
-
+import { MutableRefObject } from "react"
 import { InputParams } from "tweakpane/dist/types/api/types"
+import { TweakpaneConfig } from "tweakpane/dist/types/pane/tweakpane-config"
+
+/*
+ | TWEAKS
+ */
 
 /**
  * The User-inputted Schema
- *
- * NOTE: Want to utilize excess property checking on InputController
- *       using ValidateShape, but unable to so far.
- *       ``` // tried using this as
- *       (InputController & ValidateShape<k, InputController, "ERROR_EXCESS_PROPERTY">)
- *       | InputControllerValue
- *       ```
+ * TODO: utilize excess property checking on InputController
+ *  - attempt: (InputController &
+ *        ValidateShape<k, InputController, "ERROR_EXCESS_PROPERTY">) |
+ *        InputControllerValue
  */
 export type Schema<T> = {
   [k in keyof T]: InputController | InputControllerValue
 }
-// tried using this as value
-//  (InputController & ValidateShape<k, InputController, "ERROR_EXCESS_PROPERTY">)
-//  | InputControllerValue
 
 /**
  * Remaps type to type of "value" property if type an object
@@ -31,26 +27,13 @@ export type MapToValueKey<T> = {
 /**
  * Input Controller
  */
-// export interface InputController extends Omit<NumberConstraints, "value"> {
-//   /* universal properties */
-//   value: InputControllerValue
-
-//   name?: string
-//   onEventType?: OnEventType
-//   input?: "color" | "color.rgba" | "string"
-
-//   /* specific properties */
-//   options?: { [key: string]: number | string } // for value: number; object list
-//   format?: (value: number) => number // for value: number; reformat
-// }
 export type InputController = {
   value: InputControllerValue
-  name?: string
   onEventType?: OnEventType
 } & InputParams
 
 export type ColorHexString = string
-export type CSSRGBString = string // not supported yet
+export type CSSRGBString = string
 export type RgbObject = { r: number; g: number; b: number }
 export type RgbaObject = { r: number; g: number; b: number; a: number }
 export type Point2D = {
@@ -86,9 +69,18 @@ type NumberConstraints = {
  */
 export interface FolderController {}
 
+/**
+ * Config for Tweakpane
+ *  - container has been altered to additionally support refs as
+ *
+ */
+export type UseTweakpaneConfig = Omit<TweakpaneConfig, "container"> & {
+  container?: HTMLElement | MutableRefObject<HTMLElement>
+}
+
 /*
-// HELPERS
-*/
+ | HELPERS
+ */
 
 /**
  * Force excess property checking

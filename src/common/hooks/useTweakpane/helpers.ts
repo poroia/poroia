@@ -15,6 +15,7 @@ export const buildGui = <T extends Schema<T>>(
   schema: T,
   set: Dispatch<SetStateAction<MapToValueKey<T>>>
 ) => {
+  // ! Wait until finishChange is supported in new version and remove this
   type NonFinishChange<T extends OnEventType> = T extends "finishChange"
     ? never
     : T
@@ -25,7 +26,7 @@ export const buildGui = <T extends Schema<T>>(
       let _onEventType: NonFinishChange<OnEventType> = "change"
 
       if (tgKey<InputController>(input, "value")) {
-        const { value, onEventType, name, ...props } = input
+        const { value, onEventType, ...props } = input
 
         schema[key] = value // remap object
         optParams = props
