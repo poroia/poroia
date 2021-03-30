@@ -15,8 +15,8 @@ a {
   box-sizing: border-box;
 }
 
-.full-page {
-  position: fixed;
+.three-canvas--full-page {
+  position: fixed !important; // override threejs defaults
   top: 0;
   left: 0;
   outline: none;
