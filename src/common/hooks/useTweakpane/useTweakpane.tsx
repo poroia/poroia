@@ -15,7 +15,6 @@ export const useTweakpane = <T extends Schema<T>>(
   useIsomorphicLayoutEffect(() => {
     const tpConfig = getTpConfig(config)
     guiRef.current = new Tweakpane(tpConfig)
-    console.log(config)
     set(buildGui(guiRef.current, schema, set))
 
     return () => {

@@ -9,7 +9,7 @@ interface GalaxyProps {
   branches: number
   spin: number
   randomness: number
-  randomnessBranchPower: number
+  randomnessPower: number
   randomnessRadiusPower: number
   insideColor: string
   outsideColor: string
@@ -74,17 +74,17 @@ const generateAttributes = (
     const branchAngle = ((i % props.branches) / props.branches) * 2 * Math.PI
 
     const randomX =
-      Math.pow(Math.random(), props.randomnessBranchPower) *
+      Math.pow(Math.random(), props.randomnessPower) *
       (Math.random() < 0.5 ? 1 : -1) *
       props.randomness *
       radius
     const randomY =
-      Math.pow(Math.random(), props.randomnessBranchPower) *
+      Math.pow(Math.random(), props.randomnessPower) *
       (Math.random() < 0.5 ? 1 : -1) *
       props.randomness *
       radius
     const randomZ =
-      Math.pow(Math.random(), props.randomnessBranchPower) *
+      Math.pow(Math.random(), props.randomnessPower) *
       (Math.random() < 0.5 ? 1 : -1) *
       props.randomness *
       radius

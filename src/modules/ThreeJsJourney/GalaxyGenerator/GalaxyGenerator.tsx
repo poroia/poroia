@@ -17,7 +17,7 @@ export const GalaxyGenerator = (props: HTMLProps<HTMLElement>) => {
       branches: { value: 3, min: 2, max: 20, step: 1, onEventType: "finishChange" },
       spin: { value: 1, min: -5, max: 5, step: 0.01, onEventType: "finishChange" },
       randomness: { value: 0.5, min: 0, max: 2, step: 0.01, onEventType: "finishChange" },
-      randomnessBranchPower: { value: 3, min: 1, max: 10, step: 0.01, onEventType: "finishChange" },
+      randomnessPower: { value: 3, min: 1, max: 10, step: 0.01, onEventType: "finishChange" },
       randomnessRadiusPower: { value: 1.5, min: 1, max: 10, step: 0.01, onEventType: "finishChange" },
       insideColor: "#ff6030",
       outsideColor: "#1b3984",
