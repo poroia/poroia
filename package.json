@@ -19,8 +19,7 @@
     "react-three-fiber": "^5.3.19",
     "sass": "^1.32.8",
     "three": "^0.126.1",
-    "tweakpane": "^2.2.1",
-    "use-tweaks": "^0.3.1"
+    "tweakpane": "^2.2.1"
   },
   "devDependencies": {
     "@types/next": "^9.0.0",
