@@ -1,5 +1,3 @@
-import * as dat from "dat.gui"
-
 /*
 // TWEAKS
 */
@@ -69,7 +67,7 @@ export interface FolderController {}
 /**
  * Force excess property checking
  */
-export type ValidateShape<T, Shape, Error> = T extends Shape
+type ValidateShape<T, Shape, Error> = T extends Shape
   ? Exclude<keyof T, keyof Shape> extends never
     ? T
     : Error

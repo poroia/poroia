@@ -1,1 +1,1 @@
-export { useDatGui as default } from "./useDatGui"
+export { useDatGui } from "./useDatGui"

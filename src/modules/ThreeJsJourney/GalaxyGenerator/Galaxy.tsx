@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useRef } from "react"
 import { useFrame } from "react-three-fiber"
-import { Mesh, Color, AdditiveBlending, BufferAttribute } from "three"
+import { Mesh, Color, AdditiveBlending } from "three"
 
 interface GalaxyProps {
   count: number

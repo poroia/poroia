@@ -1,7 +1,7 @@
 import { useRef, useState } from "react"
 import { Schema, MapToValueKey } from "./types"
 import { buildGui } from "./helpers"
-import useIsomorphicLayoutEffect from "../useIsomorphicLayoutEffect"
+import { useIsomorphicLayoutEffect } from "../useIsomorphicLayoutEffect"
 
 export const useDatGui = <T extends Schema<T>>(
   schema: T,

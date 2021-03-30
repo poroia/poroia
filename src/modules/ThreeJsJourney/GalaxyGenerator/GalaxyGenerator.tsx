@@ -1,17 +1,17 @@
 import React, { HTMLProps } from "react"
 import { Canvas } from "react-three-fiber"
 import { OrbitControls } from "@react-three/drei"
-// import { useTweaks } from "use-tweaks"
-import useDatGui from "../../../common/hooks/useDatGui"
+import { useTweaks } from "use-tweaks"
+import { useDatGui, useTweakpane } from "../../../common/hooks"
 
 import { Galaxy } from "./Galaxy"
 
 export const GalaxyGenerator = (props: HTMLProps<HTMLElement>) => {
   // prettier-ignore
-  const tweaks = useDatGui(
+  const tweaks = useTweakpane(
     {
-      count: { value: 100000, min: 100, max: 1000000, step: 100, onEventType: "finishChange" },
-      size: { value: 0.01, min: 0.001, max: 0.05, step: 0.0001, onEventType: "finishChange" },
+      count: { value: 100000, min: 100, max: 1000000, step: 100, onEventType: "finishChange", name: "count (laggy)" },
+      size: { value: 0.01, min: 0.001, max: 0.05, step: 0.0001, onEventType: "finishChange", name: "size (laggy)" },
       radius: { value: 5, min: 0.01, max: 20, step: 0.01, onEventType: "finishChange" },
       branches: { value: 3, min: 2, max: 20, step: 1, onEventType: "finishChange" },
       spin: { value: 1, min: -5, max: 5, step: 0.001, onEventType: "finishChange" },
