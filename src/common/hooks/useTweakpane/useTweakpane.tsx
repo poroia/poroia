@@ -8,7 +8,7 @@ import { useIsomorphicLayoutEffect } from "../"
 export const useTweakpane = <T extends Schema<T>>(
   schema: T,
   config?: UseTweakpaneConfig
-) => {
+): [MapToValueKey<T>, Tweakpane] => {
   const [data, set] = useState<MapToValueKey<T>>()
   const guiRef = useRef<Tweakpane>()
 
@@ -22,11 +22,11 @@ export const useTweakpane = <T extends Schema<T>>(
     }
   }, [])
 
-  return [data, guiRef.current] as [MapToValueKey<T>, Tweakpane]
+  return [data, guiRef.current]
 }
 
 const getTpConfig = (config: UseTweakpaneConfig) => {
-  let c = config.container
+  const c = config.container
   if (c && "current" in c) {
     config.container = c.current
   }

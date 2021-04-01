@@ -1,3 +1,4 @@
+/* global dat */
 import { Dispatch, SetStateAction } from "react"
 import {
   Schema,
@@ -11,7 +12,7 @@ export const buildGui = <T extends Schema<T>>(
   pane: dat.GUI,
   schema: T,
   set: Dispatch<SetStateAction<MapToValueKey<T>>>
-) => {
+): MapToValueKey<T> => {
   // helper to appropriately add to pane
   const addHelper = (key: string, input: InputControllerValue) => {
     switch (typeof input) {
@@ -44,12 +45,12 @@ export const buildGui = <T extends Schema<T>>(
         c = addPropsHelper(c, props)
 
         if (onEventType === "finishChange") {
-          c = c.onFinishChange((value) => update(key, value, set))
+          c.onFinishChange((value) => update(key, value, set))
         } else {
-          c = c.onChange((value) => update(key, value, set))
+          c.onChange((value) => update(key, value, set))
         }
       } else {
-        c = addHelper(key, input).onChange((value) => update(key, value, set))
+        addHelper(key, input).onChange((value) => update(key, value, set))
       }
     }
   )
@@ -68,7 +69,15 @@ const update = <T>(
 
 // helper to add properties to controller
 // ex: `c = name !== undefined ? c.name(name) : c`
-const addPropsHelper = (c: dat.GUIController, obj: Object) => {
+const addPropsHelper = (
+  c: dat.GUIController,
+  obj: {
+    name?: string
+    min?: number
+    max?: number
+    step?: number
+  }
+) => {
   Object.entries(obj).forEach(([key, value]) => {
     c = value !== undefined ? c[key](value) : c
   })

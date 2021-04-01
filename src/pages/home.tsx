@@ -1,7 +1,9 @@
 import Head from "next/head"
+import Link from "next/link"
+import { ReactElement } from "react"
 import styles from "../styles/Home.module.scss"
 
-export default function Home() {
+export default function Home(): ReactElement {
   return (
     <div className={styles.container}>
       <Head>
@@ -12,16 +14,20 @@ export default function Home() {
       <main className={styles.main}>
         <h1 className={styles.title}>welcome to poroia!</h1>
 
-        <p className={styles.description}>a temporary landing page (Next.js starter)</p>
+        <p className={styles.description}>
+          a temporary landing page (Next.js starter)
+        </p>
 
         <div className={styles.grid}>
-          <a href="/threejs-journey/galaxy" className={styles.card}>
-            <h3>Galaxy &rarr;</h3>
-            <p>
-              threejs-journey's, except built with r3f and a custom useDatGui
-              hook
-            </p>
-          </a>
+          <Link href="/threejs-journey/galaxy">
+            <a className={styles.card}>
+              <h3>Galaxy &rarr;</h3>
+              <p>
+                threejs-journey&apos;s, except built with r3f and a custom
+                useDatGui hook
+              </p>
+            </a>
+          </Link>
 
           <a href="https://nextjs.org/learn" className={styles.card}>
             <h3>Learn &rarr;</h3>

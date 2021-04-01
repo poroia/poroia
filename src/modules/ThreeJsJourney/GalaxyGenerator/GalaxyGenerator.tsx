@@ -1,4 +1,4 @@
-import React, { useRef, HTMLProps } from "react"
+import React, { useRef, HTMLProps, ReactElement } from "react"
 import { Canvas } from "react-three-fiber"
 import { OrbitControls } from "@react-three/drei"
 import { useTweakpane } from "../../../common/hooks"
@@ -6,7 +6,9 @@ import styles from "./GalaxyGenerator.module.scss"
 
 import { Galaxy } from "./Galaxy"
 
-export const GalaxyGenerator = (props: HTMLProps<HTMLElement>) => {
+export const GalaxyGenerator = (
+  props: HTMLProps<HTMLElement>
+): ReactElement => {
   const debugContainer = useRef<HTMLDivElement>()
   // prettier-ignore
   const [tweaks] = useTweakpane(

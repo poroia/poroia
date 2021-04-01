@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef } from "react"
+import { ReactElement, useEffect, useMemo, useRef } from "react"
 import { useFrame } from "react-three-fiber"
 import { Mesh, Color, AdditiveBlending } from "three"
 
@@ -15,7 +15,7 @@ interface GalaxyProps {
   outsideColor: string
 }
 
-export const Galaxy = (props: GalaxyProps) => {
+export const Galaxy = (props: GalaxyProps): ReactElement => {
   const points = useRef<Mesh>()
 
   const [positions, colors] = useMemo(() => generateAttributes(props), [props])
@@ -60,8 +60,8 @@ export const Galaxy = (props: GalaxyProps) => {
 const generateAttributes = (
   props: GalaxyProps
 ): [Float32Array, Float32Array] => {
-  let positions = [],
-    colors = []
+  const positions = []
+  const colors = []
 
   const colorInside = new Color(props.insideColor)
   const colorOutside = new Color(props.outsideColor)

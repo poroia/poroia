@@ -14,7 +14,7 @@ export const buildGui = <T extends Schema<T>>(
   pane: Tweakpane,
   schema: T,
   set: Dispatch<SetStateAction<MapToValueKey<T>>>
-) => {
+): MapToValueKey<T> => {
   // ! Wait until finishChange is supported in new version and remove this
   type NonFinishChange<T extends OnEventType> = T extends "finishChange"
     ? never

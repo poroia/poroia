@@ -5,7 +5,7 @@
 /**
  * The User-inputted Schema
  *
- * NOTE: Want to utilize excess property checking on InputController
+ * TODO: Want to utilize excess property checking on InputController
  *       using ValidateShape, but unable to so far.
  *       ``` // tried using this as
  *       (InputController & ValidateShape<k, InputController, "ERROR_EXCESS_PROPERTY">)
@@ -13,6 +13,7 @@
  *       ```
  */
 export type Schema<T> = {
+  // eslint-disable-next-line no-unused-vars
   [k in keyof T]: InputController | InputControllerValue
 }
 // tried using this as value
@@ -57,8 +58,10 @@ export type InputControllerValue =
 
 /**
  * Folder Controller
+ * 
+ *   TODO add support for folders
  */
-export interface FolderController {}
+// export interface FolderController {}
 
 /*
 // HELPERS
@@ -66,9 +69,11 @@ export interface FolderController {}
 
 /**
  * Force excess property checking
+ *   
+ *   TODO see User inputted schema
  */
-type ValidateShape<T, Shape, Error> = T extends Shape
-  ? Exclude<keyof T, keyof Shape> extends never
-    ? T
-    : Error
-  : Shape
+// type ValidateShape<T, Shape, Error> = T extends Shape
+//   ? Exclude<keyof T, keyof Shape> extends never
+//     ? T
+//     : Error
+//   : Shape

@@ -14,6 +14,7 @@ import { TweakpaneConfig } from "tweakpane/dist/types/pane/tweakpane-config"
  *        InputControllerValue
  */
 export type Schema<T> = {
+  // eslint-disable-next-line no-unused-vars
   [k in keyof T]: InputController | InputControllerValue
 }
 
@@ -66,8 +67,10 @@ type NumberConstraints = {
 
 /**
  * Folder Controller
+ *
+ * TODO add support for folders
  */
-export interface FolderController {}
+// export interface FolderController {}
 
 /**
  * Config for Tweakpane
@@ -84,18 +87,11 @@ export type UseTweakpaneConfig = Omit<TweakpaneConfig, "container"> & {
 
 /**
  * Force excess property checking
+ *
+ * TODO see User inputted schema
  */
-type ValidateShape<T, Shape, Error> = T extends Shape
-  ? Exclude<keyof T, keyof Shape> extends never
-    ? T
-    : Error
-  : Shape
-
-/**
- * Beautifies types
- * ```
- * type A = { a: 'a' } & { b: 'b' } // { a: 'a' } & { b: 'b' }
- * type B = Id<{ a: 'a' } & { b: 'b' }> // { a: 'a'; b: 'b' }
- * ```
- */
-type Id<T> = T extends infer TT ? { [k in keyof TT]: TT[k] } : never
+// type ValidateShape<T, Shape, Error> = T extends Shape
+//   ? Exclude<keyof T, keyof Shape> extends never
+//     ? T
+//     : Error
+//   : Shape

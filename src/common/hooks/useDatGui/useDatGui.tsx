@@ -1,3 +1,4 @@
+/* global dat */
 import { useRef, useState } from "react"
 import { Schema, MapToValueKey } from "./types"
 import { buildGui } from "./helpers"
@@ -6,7 +7,7 @@ import { useIsomorphicLayoutEffect } from "../useIsomorphicLayoutEffect"
 export const useDatGui = <T extends Schema<T>>(
   schema: T,
   config?: dat.GUIParams
-) => {
+): MapToValueKey<T> => {
   const [data, set] = useState<MapToValueKey<T>>()
   const guiRef = useRef<dat.GUI>()
 

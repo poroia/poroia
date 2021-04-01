@@ -1,8 +1,8 @@
-import React, { useRef, useState } from "react"
+import { ReactElement, useRef, useState } from "react"
 import { useFrame, MeshProps } from "react-three-fiber"
 import { Mesh } from "three"
 
-const Box = (props: MeshProps) => {
+const Box = (props: MeshProps): ReactElement => {
   const mesh = useRef<Mesh>()
 
   const [hovered, setHover] = useState(false)

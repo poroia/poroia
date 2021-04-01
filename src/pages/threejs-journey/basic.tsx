@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react"
+import React, { ReactElement, useRef, useState } from "react"
 import { Canvas, useFrame } from "react-three-fiber"
 import { Mesh } from "three"
 
@@ -27,7 +27,7 @@ const Box = (props) => {
   )
 }
 
-const ThreeJsTutorial = () => {
+const ThreeJsTutorial = (): ReactElement => {
   return (
     <Canvas className="container_full-page">
       <ambientLight intensity={0.5} />
@@ -37,9 +37,6 @@ const ThreeJsTutorial = () => {
       <Box position={[1.2, 0, 0]} />
     </Canvas>
   )
-}
-{
-  /* <Canvas colorManagement camera={{ position: [0, 0, 300] }}></Canvas> */
 }
 
 export default ThreeJsTutorial
