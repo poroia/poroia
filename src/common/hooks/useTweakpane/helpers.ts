@@ -1,4 +1,6 @@
 import { Dispatch, SetStateAction } from "react"
+import Tweakpane from "tweakpane"
+import { InputParams } from "tweakpane/dist/types/api/types"
 import {
   Schema,
   MapToValueKey,
@@ -7,8 +9,6 @@ import {
   OnEventType,
 } from "./types"
 import { tgKey } from "../../utils/tg"
-import Tweakpane from "tweakpane"
-import { InputParams } from "tweakpane/dist/types/api/types"
 
 export const buildGui = <T extends Schema<T>>(
   pane: Tweakpane,
