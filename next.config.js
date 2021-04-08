@@ -7,8 +7,8 @@ const withTM = require("next-transpile-modules")([
 module.exports = withTM({
   redirects: async () => [
     {
-      source: "/sketch/:slug/",
-      destination: "/sketch/:slug/index.html",
+      source: "/static/:slug*",
+      destination: "/static/:slug*/index.html",
       permanent: true,
     },
     {
