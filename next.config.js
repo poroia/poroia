@@ -8,7 +8,7 @@ module.exports = withTM({
   redirects: async () => [
     {
       source: "/static/:slug*",
-      destination: "/static/:slug*/index.html",
+      destination: "/static/:slug/index.html",
       permanent: true,
     },
     {
