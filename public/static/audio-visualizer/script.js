@@ -40,6 +40,7 @@ drawVisualizer()
 
 function setupEventListeners() {
   window.addEventListener("resize", resize)
+  window.addEventListener("hashchange", resize)
 
   audio.addEventListener("play", setupContext)
 
