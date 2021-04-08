@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Audio Visualizer</title>
+
+    <link rel="stylesheet" href="style.css" />
+    <script type="text/javascript" src="script.js" defer></script>
+    <script></script>
+  </head>
+  <body>
+    <canvas id="visualizer"></canvas>
+    <main>
+      <div class="tweaks">
+        <label for="volume">Volume</label>
+        <input
+          type="range"
+          min="0"
+          max="1"
+          value="0.5"
+          step="0.1"
+          id="volume"
+        />
+        <label for="bass">Bass</label>
+        <input type="range" min="-10" max="10" value="0" id="bass" />
+        <label for="mid">Mid</label>
+        <input type="range" min="-10" max="10" value="0" id="mid" />
+        <label for="treble">Treble</label>
+        <input type="range" min="-10" max="10" value="0" id="treble" />
+      </div>
+      <audio controls src="01_falling.mp3" id="audio">lmao</audio>
+      <a href="script.js">source code</a>
+    </main>
+  </body>
+</html>

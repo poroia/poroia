@@ -1,0 +1,33 @@
+body {
+  margin: 2em;
+  background-color: #dbdbdb;
+}
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+}
+
+main {
+  margin: 0 auto;
+  max-width: 960px;
+  text-align: center;
+}
+
+.tweaks {
+  display: grid;
+  grid-template-columns: auto min-content;
+  justify-content: center;
+  justify-items: end;
+  align-items: center;
+  gap: 0.5em 1em;
+}
+
+audio {
+  margin: 1em auto;
+  display: block;
+}
