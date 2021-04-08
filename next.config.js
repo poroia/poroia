@@ -11,10 +11,5 @@ module.exports = withTM({
       destination: "/static/:slug/index.html",
       permanent: true,
     },
-    {
-      source: "/test/lol",
-      destination: "/test",
-      permanent: false,
-    },
   ],
 })
