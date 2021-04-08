@@ -4,7 +4,7 @@ const withTM = require("next-transpile-modules")([
   "postprocessing",
 ])
 
-module.exports = {
+module.exports = withTM({
   redirects: async () => [
     {
       source: "/sketch/:slug/index.html",
@@ -17,5 +17,4 @@ module.exports = {
       permanent: false,
     },
   ],
-  withTM,
-}
+})
