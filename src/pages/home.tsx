@@ -7,7 +7,7 @@ export default function Home(): ReactElement {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Create Next App</title>
+        <title>poroia</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
