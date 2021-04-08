@@ -8,7 +8,7 @@ module.exports = {
   withTM,
   redirects: async () => [
     {
-      source: "/sketch/:slug/index.html)",
+      source: "/sketch/:slug/index.html",
       destination: "/sketch/:slug",
       permanent: true,
     },
